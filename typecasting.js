@@ -6,4 +6,4 @@ console.log(typeof ageInNumber); // returns number
 
 let weight = '67sdc';
 let weightInNumber = Number(weight);
-console.log(typeof weightInNumber);
+console.log(weightInNumber); // returns NaN as 67sdc can't be converted to number
