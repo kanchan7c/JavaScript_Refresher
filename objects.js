@@ -107,3 +107,18 @@ console.log(user.hasOwnProperty('name')); // true
 console.log(user.hasOwnProperty('country')); // false
 
 // Object destructuring
+
+const person1 = {
+  name: 'nobody',
+  age: 45,
+  height: '5.6',
+  weight: '70kg',
+};
+
+// taking out properties from person1 object
+const { name, height } = person1;
+console.log(name, height); // nobody 5.6
+
+// API
+
+//use json formatter to understand the data from API
