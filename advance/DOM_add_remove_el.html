@@ -8,7 +8,55 @@
 </head>
 
 <body>
-  <div class="parent"></div>
+  <ul class="language">
+    <li>JavaScript</li>
+  </ul>
 </body>
+<script>
+
+  //common approach
+
+  function addLanguage(langName)
+  {
+    const LI = document.createElement('li')
+    // const parentList = document.querySelector('.language')
+    // const textNode = document.createTextNode(langName)
+    // LI.appendChild(textNode)
+    // parentList.appendChild(LI)
+    LI.innerHTML = `${langName}`
+    document.querySelector('.language').appendChild(LI)
+  }
+
+  addLanguage('Python')
+  addLanguage('C++')
+  addLanguage('Ruby')
+
+  // More optimized way
+
+  function addLang(langName)
+  {
+    const li = document.createElement('li')
+    li.appendChild(document.createTextNode(langName))
+    document.querySelector('.language').appendChild(li)
+  }
+
+  addLang('Go Lang')
+
+  // Editing
+
+  const secondLi = document.querySelector('li:nth-child(2)')
+  const newLi = document.createElement('li')
+  newLi.textContent = 'Java'
+  secondLi.replaceWith(newLi) // replace the existing el with new el
+
+  const firstLang = document.querySelector('li:first-child')
+  firstLang.outerHTML = '<li>TypeScript</li>' // changes the first language
+
+  // Remove
+
+  const lastLang = document.querySelector('li:last-child')
+  lastLang.remove() // removes the element Go Lang
+
+</script>
 
 </html>
