@@ -15,9 +15,10 @@ const colors = document.querySelectorAll('.button');
 // Looping over the nodeList received
 colors.forEach((item) => {
   // applying a click event on the color options
-  item.addEventListener('click', () => {
+  item.addEventListener('click', (e) => {
     // saving received color in a variable
-    let receivedColor = item.getAttribute('id');
+    // let receivedColor = item.getAttribute('id');
+    let receivedColor = e.target.id;
 
     // using the received color variable to change body background
     body.style.backgroundColor = receivedColor;
