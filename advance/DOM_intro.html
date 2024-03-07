@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Intro</title>
+  <style>
+    body {
+      background-color: #01011e;
+      color: #ffff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-black">
+    <h1 class="heading">DOM Learning</h1>
+    <p>Lorem ipsum dolor, sit amet adipisicing.</p>
+    <ul>
+      <li class="list-item">One</li>
+      <li class="list-item">Two</li>
+      <li class="list-item">Three</li>
+      <li class="list-item">Four</li>
+    </ul>
+  </div>
+</body>
+<script>
+  // WINDOW
+  // -- DOCUMENT
+  //  -- HTML
+  //     -- HEAD
+  //       -- TITLE
+  //         -- Text Node (Text value)
+  //       -- META
+  //         -- Attribute
+  //     -- BODY
+  //       -- div
+  //         -- attribute
+  //         -- h1
+  //           -- attribute
+  //           -- text node
+  //         -- p
+  //           -- text node
+
+  // document.querySelectorAll() gives a nodeList wherein each item can be accessed using forEach loop. It doesn't gives a traditional array so map function or other loops won't work
+
+  // document.getElementsByClassName returns a HTML collection that doesn't contain any array methods to loop therefore we need to convert it into an array to perform any operation
+
+  // use Array.from() method to convert a nodeList or HTML collection into an array
+
+  // Example:
+  const listArray = Array.from(document.getElementsByClassName('list-item')); // there are classNames called list-item
+
+  listArray.map((item) => (item.style.color = 'green'));
+
+</script>
+
+</html>
