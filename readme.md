@@ -1,4 +1,4 @@
-#JavaScript refresher practice in depth
+## JavaScript refresher practice in-depth
 
 ## Credits to '[Hitesh Choudhary](https://github.com/hiteshchoudhary/)' for helping me learn JS in detail
 
