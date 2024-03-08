@@ -10,7 +10,8 @@ let guesses = [];
 let chances = 10;
 
 // generating random number between 1 to 100 for the player to play the game
-const random_num = Math.floor(Math.random() * 100);
+let random_num = Math.floor(Math.random() * 100);
+console.log(random_num);
 
 // Starting off with 10 chances in hand
 chancesLeft.innerHTML = chances;
@@ -86,6 +87,9 @@ form.addEventListener('submit', (e) => {
 
       // clearing form input
       form.reset();
+
+      // Generating random number again as now the player saw the random number we had
+      random_num = Math.floor(Math.random() * 100);
     }
   }
   // if chances exhaust, then the following will execute
