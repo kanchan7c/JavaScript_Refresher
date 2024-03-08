@@ -70,6 +70,8 @@ form > button:disabled,
 }
 
 .result-block {
+  min-height: 50px;
+  /* margin-top: 1rem; */
   padding: 1rem;
   color: black;
 }
@@ -77,4 +79,18 @@ form > button:disabled,
 .guess-remaining {
   font-size: 2rem;
   font-weight: 900;
+}
+
+.result,
+.guesses,
+.guess-remaining {
+  /* margin-top: 10px; */
+  height: 20px;
+  padding: 0.5rem;
+  color: white;
+}
+
+.guesses {
+  font-size: 1rem;
+  font-weight: 800;
 }
