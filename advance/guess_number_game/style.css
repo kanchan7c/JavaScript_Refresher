@@ -5,3 +5,76 @@
 .red {
   color: red;
 }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  font-family: sans-serif;
+  background-color: lightslategray;
+}
+
+.info-block > h3 {
+  text-transform: capitalize;
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.info-block > p {
+  font-weight: 700;
+}
+
+.info-block > p > span {
+  color: white;
+}
+
+.game-block {
+  border: 1px solid grey;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  padding-bottom: 3rem;
+  background-color: bisque;
+}
+
+.game-block > h1 {
+  color: #100131;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+}
+
+form > input {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 0.5px solid lightgray;
+  font-size: 0.8rem;
+}
+
+form > button,
+.reset {
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  background-color: black;
+  color: #f9f6f6;
+  cursor: pointer;
+}
+
+form > button:disabled,
+.reset:disabled {
+  background-color: #454545;
+  cursor: none;
+}
+
+.result-block {
+  padding: 1rem;
+  color: black;
+}
+
+.guess-remaining {
+  font-size: 2rem;
+  font-weight: 900;
+}
