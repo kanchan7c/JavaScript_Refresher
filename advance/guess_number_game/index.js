@@ -49,6 +49,7 @@ form.addEventListener('submit', (e) => {
     else if (guessed_num !== random_num) {
       // for styling purpose only
       result.className = 'red';
+
       // displaying result to the player for incorrect guess
       result.innerHTML = `Incorrect guess! Try again!`;
 
@@ -61,6 +62,7 @@ form.addEventListener('submit', (e) => {
 
       // if chances are exhausted while playing the game
       if (chances === 0) {
+        result.innerHTML = `Game Over!`;
         // submit guess button will be disabled
         submit.setAttribute('disabled', true);
         // reset function will be invoked
