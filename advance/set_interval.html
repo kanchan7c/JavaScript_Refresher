@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Set Interval</title>
+</head>
+
+<body>
+  <button id="start">Start</button>
+  <button id="stop">stop</button>
+</body>
+<script>
+  let intervalSet
+
+  function message(msg)
+  {
+    console.log(msg)
+  }
+
+  const interval = () =>
+  {
+    intervalSet = setInterval(message, 2000, 'This is the sample message')
+  }
+
+  document.querySelector('#start').addEventListener('click', () =>
+  {
+    interval()
+  })
+
+  document.querySelector('#stop').addEventListener('click', () =>
+  {
+    clearInterval(intervalSet)
+    console.log('stopped intervals')
+  })
+</script>
+
+</html>
