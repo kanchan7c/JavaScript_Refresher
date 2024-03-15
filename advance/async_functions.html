@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Async Fn</title>
+</head>
+
+<body>
+  <h1>Hello!</h1>
+  <h2>My name is <p></p>
+  </h2>
+  <p>I am a <span></span></p>
+  <button>stop timeout</button>
+</body>
+<script>
+  // basic set timeout function explanation
+  (function executeStatements()
+  {
+    console.log(1)
+
+    const print2 = setTimeout(() =>
+    {
+      console.log(2)
+    }, 2000)
+
+    console.log(3)
+    console.log(4)
+    for (let i = 11; i <= 20; i++)
+    {
+      console.log(i)
+    }
+
+    // clear timeout function stops set timeout from call back queue
+    let button = document.querySelector('button')
+    button.addEventListener('click', () => clearTimeout(print2))
+
+  })()
+
+
+
+  // trying set timeout with DOM
+
+  // let p = document.querySelector('p')
+  // let span = document.querySelector('span')
+
+  // function addName()
+  // {
+  //   p.innerHTML = ' <h1>Kanchan Chaudhary</h1>'
+  // }
+
+  // function changeText()
+  // {
+  //   let jobRole = ['Web Developer', 'Designer', 'Frontend Developer']
+
+  //   jobRole.map((role) =>
+  //   {
+  //     span.innerHTML += `${role}, `
+  //   })
+  // }
+
+  // setTimeout(addName, 2000);
+
+  // changeText()
+</script>
+
+</html>
