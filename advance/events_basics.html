@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events</title>
+</head>
+
+<body>
+  <div>
+    <h2>This is the heading</h2>
+    <p>This is my paragraph</p>
+  </div>
+</body>
+<script>
+  // event object details to learn 
+  // type, timestamp, defaultPrevented
+  // target, toElement, srcElement, currentTarget
+  // clientX, clientY, screenX, screenY
+  // altkey, ctrlkey, shiftkey, keyCode
+  document.querySelector('p').addEventListener('click', (e) =>
+  {
+    console.log(e)
+  }, false)
+
+  // event propagation
+  // 1. Event bubbling 2. Event Capturing
+  // Event capturing goes top to bottom that is from parent to child
+  // Event bubbling goes from bottom to top that is from child to parent
+
+  document.querySelector('div').addEventListener('click', (e) =>
+  {
+    console.log('clicked div')
+  }, false)
+
+  document.querySelector('h2').addEventListener('click', (e) =>
+  {
+    console.log('clicked h2')
+    e.stopPropagation() // to stop event bubbling
+  }, false)
+
+</script>
+
+</html>
