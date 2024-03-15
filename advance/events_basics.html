@@ -5,12 +5,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Events</title>
+  <style>
+    img {
+      width: 250px;
+    }
+  </style>
 </head>
 
 <body>
-  <div>
+  <!-- <div>
     <h2>This is the heading</h2>
     <p>This is my paragraph</p>
+  </div> -->
+  <div>
+    <ul id="parent">
+      <li class="child"><img id="horse"
+          src="https://images.pexels.com/photos/1748769/pexels-photo-1748769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          alt="Horse"></li>
+      <li class="child"><img id="cat"
+          src="https://images.pexels.com/photos/57416/cat-sweet-kitty-animals-57416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          alt="Cat"></li>
+      <li class="child"><img id="owl"
+          src="https://images.pexels.com/photos/1745352/pexels-photo-1745352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          alt="owl"></li>
+      <li class="child"><img id="moneky"
+          src="https://images.pexels.com/photos/1822603/pexels-photo-1822603.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          alt="monkey"></li>
+      <li class="child"><img id="dog"
+          src="https://images.pexels.com/photos/1755226/pexels-photo-1755226.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          alt="dog"></li>
+      <li class="child"><a id="google" href="https://google.com" target="_blank">Google</a></li>
+    </ul>
   </div>
 </body>
 <script>
@@ -19,26 +44,62 @@
   // target, toElement, srcElement, currentTarget
   // clientX, clientY, screenX, screenY
   // altkey, ctrlkey, shiftkey, keyCode
-  document.querySelector('p').addEventListener('click', (e) =>
-  {
-    console.log(e)
-  }, false)
+  // document.querySelector('p').addEventListener('click', (e) =>
+  // {
+  //   console.log(e)
+  // }, false)
 
   // event propagation
   // 1. Event bubbling 2. Event Capturing
   // Event capturing goes top to bottom that is from parent to child
   // Event bubbling goes from bottom to top that is from child to parent
 
-  document.querySelector('div').addEventListener('click', (e) =>
+  // document.querySelector('div').addEventListener('click', (e) =>
+  // {
+  //   console.log('clicked div')
+  // }, false)
+
+  // document.querySelector('h2').addEventListener('click', (e) =>
+  // {
+  //   console.log('clicked h2')
+  //   e.stopPropagation() // to stop event bubbling
+  // }, false)
+
+  // Remove img tag if clicked upon >>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  let parent = document.getElementById('parent')
+
+  // parent.addEventListener('click', function (e)
+  // {
+  //   console.log('clicked inside the ul')
+  // }, false);
+
+  // document.getElementById('cat').addEventListener('click', function (e)
+  // {
+  //   console.log('cat clicked')
+  // }, false)
+
+  document.getElementById('google').addEventListener('click', function (e)
   {
-    console.log('clicked div')
+    e.preventDefault()
   }, false)
 
-  document.querySelector('h2').addEventListener('click', (e) =>
+  parent.addEventListener('click', (e) =>
   {
-    console.log('clicked h2')
-    e.stopPropagation() // to stop event bubbling
-  }, false)
+    console.log(e.target)
+    console.log(e.target.parentNode)
+
+    if (e.target.tagName === 'IMG')
+    {
+
+      // 1st method
+      e.target.parentNode.remove()
+
+      // 2nd method
+      // e.target.parentNode.parentNode.removeChild(e.target.parentNode)
+    }
+  })
 
 </script>
 
