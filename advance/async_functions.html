@@ -34,7 +34,11 @@
 
     // clear timeout function stops set timeout from call back queue
     let button = document.querySelector('button')
-    button.addEventListener('click', () => clearTimeout(print2))
+    button.addEventListener('click', () =>
+    {
+      clearTimeout(print2)
+      console.log('stopped printing 2')
+    })
 
   })()
 
