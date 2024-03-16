@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Color Hex Generator</title>
+  <style>
+    body {
+      min-height: 100vh;
+    }
+
+    div {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+</body>
+
+<script>
+
+  function colorHexGenerator()
+  {
+    const hex = '0123456789ABCDEF'
+    let color = '#'
+    for (let i = 0; i < 6; i++)
+    {
+      color += hex[Math.floor(Math.random() * 16)]
+    }
+
+    return color
+  }
+
+  function changeColor()
+  {
+    let currentColor = colorHexGenerator()
+    console.log(currentColor)
+    document.querySelector('body').style.backgroundColor = currentColor
+  }
+
+  setInterval(changeColor, 1000)
+
+</script>
+
+</html>
