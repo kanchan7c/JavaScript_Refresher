@@ -12,6 +12,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 2rem;
     }
 
     button {
@@ -37,111 +38,98 @@
 
 </body>
 <script>
-  "use strict";
+
   /***************************************************************
    * Problem statement:
    * WAP to change the background color upon click of start button and stop changing the color on the click of stop button
-   
-   * Steps to approach the solution:
-    - Create a start button and stop button
-    - Add click events on both the buttons
-    - Find out a way to generate random colors to set background
-    - Change the background color on intervals
    * *************************************************************/
 
-  // we will create the buttons now
-  let start = document.createElement('button')
-  let stop = document.createElement('button')
-
-  // now we have both our buttons created but they are not yet visible on screen!
-  // let's make them visible on screen :)
-  // we will create a text node for our buttons now
-
-  let textNodeStart = document.createTextNode('Start')
-  let textNodeStop = document.createTextNode('Stop')
-
-  start.style.marginRight = '20px'
-  // we have our button texts, now add them to the buttons
-  start.appendChild(textNodeStart)
-
-  stop.appendChild(textNodeStop)
-
-  // we have added the text to our buttons, now we will add them to the body
-  document.body.appendChild(start)
-
-  // you can see that the start button is visible now, let's add stop button as well
-
-  document.body.appendChild(stop)
-  // now that we have our buttons, let's work on the problem statement
-
-  // we will do this through the functional programming
-  // let's add functions to make this happen
-
-  function randomNumbersGeneration()
+  function App()
   {
+    "use strict";
+    // Creating DOM elements
+    // elName: HTML Tag Name, elText: Text Content of HTML element, parentEl: Name of the HTML tag you want to add the element that we created
 
-    // let's learn about how we will get random colors
-    // colors can be in rbg that is red blue green format in comma separated values
-    // each color range is from 0 to 255
-    // we will generate random number between 0 to 255 to get different colors
-    // since we need 3 different random numbers for red blue and green each, let's dig in
+    // Function returns the newly created element reference
 
-    // we are using Math library here, we get random numbers between 0 to 1 when we use random method. We need numbers between 0 to 255 that is why we multiplied it by 255. We did a math.floor here to remove decimal points from our random number
-    let randomNum1 = Math.floor(Math.random() * 255)
-
-    // let's generate 2 more random numbers
-    let randomNum2 = Math.floor(Math.random() * 255)
-    let randomNum3 = Math.floor(Math.random() * 255)
-
-    return [randomNum1, randomNum2, randomNum3]
-
-  }
-
-  // I changed the function name as I am splitting the code into multiple functions. Now our first function generates random nums
-  // let's go ahead to solve now
-
-  function changeBackgroundColor()
-  {
-    let randomNums = randomNumbersGeneration()
-    // we are executing random number function here to get access of our random numbers. Now let's target body
-    // console.log(randomNums[0], randomNums[1], randomNums[2])
-
-    document.querySelector('body').style.backgroundColor = `rgb(${randomNums[0]},${randomNums[1]},${randomNums[2]})`
-  }
-  // let's check if it works
-  // changeBackgroundColor()
-
-  // Now that we see that the background color is changing
-  // Let's go ahead and make it happen on the click of the button
-  // We will need to access the buttons and add functionalities
-
-  // initializing the interval change variable to get reference of setInterval as a global variable to access in stop change function
-
-  let interval
-
-  function startChangeColor()
-  {
-    // We are asking the system to change the background color automatically every 2 seconds
-    // We gave the changeBackgroundColor function reference as a callback function for our setInterval method, the second param is time in milliseconds
-    interval = setInterval(changeBackgroundColor, 2000)
-  }
-
-  (function attachEvents()
-  {
-    // start button functionality added
-    start.addEventListener('click', () =>
+    function createDOMElement(elName, elText, parentEl)
     {
-      startChangeColor()
-      console.log('Started Color Change')
-    })
+      let element = document.createElement(elName)
+      let textNode = document.createTextNode(elText)
 
-    // stop button functionality added
-    stop.addEventListener('click', () =>
+      element.appendChild(textNode)
+      let elementCreated = document.querySelector(parentEl).appendChild(element)
+
+      return elementCreated
+    }
+
+    // Creating a function to add event to a given element
+    function attachEvent(elName, eventFunction)
     {
-      clearInterval(interval)
-      console.log('Stopped color change')
-    })
-  })()
+      eventFunction(elName)
+    }
+
+    // Function to generate and return 3 random numbers between 0 to 255
+    function randomNumbersGeneration()
+    {
+      let randomNum1 = Math.floor(Math.random() * 255)
+      let randomNum2 = Math.floor(Math.random() * 255)
+      let randomNum3 = Math.floor(Math.random() * 255)
+
+      return [randomNum1, randomNum2, randomNum3]
+    }
+
+    // Function to change the background color of HTML body based on our random numbers
+    function changeBackgroundColor()
+    {
+      let randomNums = randomNumbersGeneration()
+      document.querySelector('body').style.backgroundColor = `rgb(${randomNums[0]},${randomNums[1]},${randomNums[2]})`
+    }
+
+    // Taking a global reference of setInterval to clear it later
+    let interval
+
+    // Function to kick of the background color change in every 2 seconds
+    function startChangeColor()
+    {
+      interval = setInterval(changeBackgroundColor, 2000)
+    }
+
+    // Function to add functionality to the start button
+    function startChange(elName)
+    {
+      elName.addEventListener('click', () =>
+      {
+        startChangeColor()
+        console.log('Started Color Change')
+      })
+    }
+
+    // Function to add functionality to the stop button
+    function stopChange(elName)
+    {
+      elName.addEventListener('click', () =>
+      {
+        clearInterval(interval)
+        console.log('Stopped color change')
+      })
+    }
+
+    function init()
+    {
+      // Creating the elements by providing params and storing the returned reference into variable
+      let start = createDOMElement('button', 'start', 'body')
+      let stop = createDOMElement('button', 'stop', 'body')
+      // Adding events to our newly created buttons
+      attachEvent(start, startChange)
+      attachEvent(stop, stopChange)
+    }
+
+    init()
+  }
+
+  // Loading the App
+  document.body.onload = App
 
 </script>
 
