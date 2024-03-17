@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      font-family: sans-serif;
+      background-color: rgb(7, 0, 19);
+      color: bisque;
+    }
+
+    #insert {
+      border: 1px solid white;
+      border-radius: 10px;
+      padding: 10px;
+    }
+  </style>
+  <title>Keyboard Event</title>
+</head>
+
+<body>
+  <div id="insert">
+    <h1>Press any key to see the magic!</h1>
+  </div>
+</body>
+
+<script>
+
+  document.onload = App()
+
+  function App()
+  {
+    let h1 = document.querySelector('h1')
+
+    window.addEventListener('keydown', (event) =>
+    {
+      event.preventDefault()
+      // console.log(event)
+
+      if (event.ctrlKey && event.key)
+      {
+        h1.innerHTML = `Ctrl + ${event.key}`
+      }
+      else if (event.altKey && event.key)
+      {
+        h1.innerHTML = `Alt + ${event.key}`
+      }
+      else if (event.shiftKey && event.key)
+      {
+        h1.innerHTML = `Shift + ${event.key}`
+      }
+      else if (event.metaKey && event.key)
+      {
+        h1.innerHTML = `Command + ${event.key}`
+      }
+      else if (event.key === ' ')
+      {
+        h1.innerHTML = `SPACE`
+      }
+      else
+      {
+        h1.innerHTML = event.key
+      }
+    })
+
+  }
+</script>
+
+</html>
