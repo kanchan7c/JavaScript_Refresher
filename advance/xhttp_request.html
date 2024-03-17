@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XHTTP Requests</title>
+  <style>
+    div {
+      height: 200px;
+      width: 200px;
+      margin: 10px;
+      padding: 10px;
+    }
+
+    img {
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+</body>
+<script>
+
+  (function apiData()
+  {
+    const xhr = new XMLHttpRequest()
+    let requestURL = 'https:/api.github.com/users/kanchan7c'
+    xhr.open('GET', requestURL)
+    xhr.onreadystatechange = function ()
+    {
+      // console.log(xhr.readyState)
+
+      if (xhr.readyState === 4)
+      {
+        // console.log(this.responseText)
+        let data = JSON.parse(this.responseText)
+        // console.log(data.followers)
+
+        button.addEventListener('click', () =>
+        {
+          div.innerHTML = `<img src=${data.avatar_url} alt='profile picture'/>`
+          h2.innerHTML = `Followers count: ${data.followers}`
+        })
+
+      }
+    }
+    xhr.send()
+  })()
+
+  function createElement(name, parent, text)
+  {
+    name = document.createElement(name)
+    name.innerHTML = `${text}`
+    parent = document.querySelector(parent)
+    parent.appendChild(name)
+
+    return name
+  }
+
+  let button = createElement('button', 'body', 'Get Data')
+  let div = createElement('div', 'body', '')
+  let h2 = createElement('h2', 'body', '')
+
+
+</script>
+
+</html>
