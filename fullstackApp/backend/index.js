@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 });
 
 // Simple API that serves jokes data
-app.get('/jokes', (req, res) => {
+app.get('/api/jokes', (req, res) => {
   const jokes = [
     { id: 1, title: 'A', desc: 'A joke' },
     { id: 2, title: 'B', desc: 'B joke' },
